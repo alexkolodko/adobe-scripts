@@ -1,3 +1,12 @@
+// 
+// Square of objects as text
+// v.1.0
+// 
+// Author: Alex Kolodko with ChatGPT 3.5
+// Contacts: alexkolodko.com
+// Github: https://github.com/alexkolodko/adobe-scripts
+// 
+
 // Calculate and log area and length
 var areaCM = Math.abs(app.selection[0].area * 0.0012445).toFixed(3);
 var areaM = (Math.abs((app.selection[0].area * 0.0012445) / 10000)).toFixed(3);

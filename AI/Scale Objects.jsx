@@ -1,4 +1,10 @@
-// Scale Objects v.1.0
+// 
+// Scale Objects
+// v.1.0
+// 
+// Author: Alex Kolodko with ChatGPT 3.5
+// Contacts: alexkolodko.com
+// Github: https://github.com/alexkolodko/adobe-scripts
 // 
 
 #target illustrator

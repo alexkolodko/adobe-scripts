@@ -1,3 +1,12 @@
+// 
+// Calculate the difference between the areas of two objects
+// v.1.0
+// 
+// Author: Alex Kolodko with ChatGPT 3.5
+// Contacts: alexkolodko.com
+// Github: https://github.com/alexkolodko/adobe-scripts
+// 
+
 // Check if at least two objects are selected
 if (app.selection.length < 2) {
     alert("Please select at least two objects.");

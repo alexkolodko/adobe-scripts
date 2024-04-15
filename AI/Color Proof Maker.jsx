@@ -1,11 +1,12 @@
-// ABOUT
-// Скрипт, який генерує варіанти кольорів для цифрового друку у CMYK для виділеного об’єкта. 
 // 
+// A script that generates color variations for digital printing in CMYK for the selected object
 // v.1.0
-
-// AUTHOR
-// 2020, Aleksandr Kolodko, alexkolodko.com
-
+// 2020
+// 
+// Author: Alex Kolodko with ChatGPT 3.5
+// Contacts: alexkolodko.com
+// Github: https://github.com/alexkolodko/adobe-scripts
+// 
 
 const PT_TO_MM = 2.8346456692913;
 const EM_TO_MM = 0.3514598035146;
