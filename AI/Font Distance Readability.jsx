@@ -70,7 +70,7 @@ function main() {
         var metrics = getTextMetrics(textSize, scaleMultiplier);
 
         // Create a dialog box to display results
-        var dialog = new Window("dialog", "Text Metrics");
+        var dialog = new Window("dialog", "Font Distance Readability");
         dialog.orientation = "column";
         dialog.alignChildren = ["fill", "fill"];
 
@@ -135,7 +135,7 @@ function main() {
         function updateMetrics(selectedScale) {
             scaleMultiplier = selectedScale;
             metrics = getTextMetrics(textSize, scaleMultiplier);
-            textSizeInput.text = metrics.textSize + " pt"; // (" + (metrics.textSize * 0.352778).toFixed(2) + " mm)
+            textSizeInput.text = metrics.textSize.toFixed(2) + " pt"; // (" + (metrics.textSize * 0.352778).toFixed(2) + " mm)
             capHeightInput.text = metrics.capHeight.toFixed(2) + " mm";
             xHeightInput.text = metrics.xHeight.toFixed(2) + " mm";
             readingDistanceInput.text = "~" + metrics.readingDistance.toFixed(2) + " m";

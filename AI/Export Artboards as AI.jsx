@@ -24,9 +24,10 @@ if (saveFolder != null) { // Check if user selected a folder
     var prefixGroup = dialog.add("group");
     prefixGroup.orientation = "column";
     prefixGroup.alignChildren = "left";
+    dialog.preferredSize.width = 300; // Set dialog width to 300 px
     prefixGroup.add("statictext", undefined, "Enter filename prefix:");
     var prefixInput = prefixGroup.add("edittext", undefined, defaultPrefix); // Set default value to extracted filename
-    prefixInput.characters = 20; // Set the maximum characters allowed
+    prefixInput.preferredSize.width = 300; // Set input width to 300 px
     prefixInput.active = true; // Make prefixInput active
     
     var divider1 = dialog.add("panel", undefined, undefined, {name: "divider1"}); 
@@ -51,6 +52,17 @@ if (saveFolder != null) { // Check if user selected a folder
         checkboxes[i] = artboardGroup.add("checkbox", undefined, checkboxLabel);
         checkboxes[i].enabled = false; // Disable checkboxes by default
     }
+
+    // Checkbox group for additional options
+    var optionsGroup = dialog.add("group");
+    optionsGroup.orientation = "column";
+    optionsGroup.alignChildren = "left";
+    optionsGroup.add("statictext", undefined, "Options:");
+    var includeArtboardNumberCheckbox = optionsGroup.add("checkbox", undefined, "Include artboard number");
+    includeArtboardNumberCheckbox.value = true; // Default checked
+    var includeArtboardNameCheckbox = optionsGroup.add("checkbox", undefined, "Include artboard name");
+    includeArtboardNameCheckbox.value = true; // Default checked
+
     var btnGroup = dialog.add("group");
     btnGroup.alignment = "right";
     btnGroup.add("button", undefined, "OK");
@@ -75,35 +87,48 @@ if (saveFolder != null) { // Check if user selected a folder
         dialog.close();
         var prefix = prefixInput.text || defaultPrefix; // Use defaultPrefix if prefixInput is empty
 
-        // Loop through artboards based on user selection
         if (allRadio.value) {
             var start = 0;
             var end = boards.length;
+            for (var i = start; i < end; i++) {
+                saveArtboard(i, prefix);
+            }
         } else if (selectedRadio.value) {
             var selectedArtboardIndex = document.artboards.getActiveArtboardIndex();
-            var start = selectedArtboardIndex;
-            var end = selectedArtboardIndex + 1;
+            saveArtboard(selectedArtboardIndex, prefix);
         } else if (fewRadio.value) {
-            var selectedArtboards = [];
             for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].value) {
-                    selectedArtboards.push(i);
+                if (checkboxes[i].value) { // Check if the checkbox is selected
+                    saveArtboard(i, prefix); // Save only the selected artboard
                 }
             }
-            var start = selectedArtboards[0];
-            var end = selectedArtboards[selectedArtboards.length - 1] + 1;
-        }
-
-        // Loop through the selected artboards and save them with the specified prefix
-        for (var i = start; i < end; i++) {
-            document.artboards.setActiveArtboardIndex(i);
-            var saveOptions = new IllustratorSaveOptions();
-            var aiDoc = new File(saveFolder + "/" + prefix + (i + 1).toString() + ".ai"); // Save with .ai extension
-            saveOptions.saveMultipleArtboards = true;
-            saveOptions.artboardRange = (i + 1).toString();
-            document.saveAs(aiDoc, saveOptions);
         }
     };
+
+    // Modify saveArtboard function to include artboard number and name based on user selection
+    function saveArtboard(artboardIndex, prefix) {
+        document.artboards.setActiveArtboardIndex(artboardIndex);
+        var saveOptions = new IllustratorSaveOptions();
+        var fileName = prefix;
+
+        // Include artboard number if selected
+        if (includeArtboardNumberCheckbox.value) {
+            fileName += "-" + (artboardIndex + 1).toString();
+        }
+
+        // Include artboard name if selected and only once
+        if (includeArtboardNameCheckbox.value && artboardIndex === 0) {
+            var artboardName = document.artboards[artboardIndex].name;
+            if (artboardName !== "") {
+                fileName += "-" + artboardName.replace(/\s+/g, '-'); // Replace spaces with dashes   
+            }
+        }
+
+        var aiDoc = new File(saveFolder + "/" + fileName + ".ai"); // Save with .ai extension
+        // saveOptions.saveMultipleArtboards = true;
+        saveOptions.artboardRange = (artboardIndex + 1).toString();
+        document.saveAs(aiDoc, saveOptions, true);
+    }
 
     // Event listener for Cancel button
     btnGroup.children[1].onClick = function() {
