@@ -19,16 +19,16 @@ doc = app.activeDocument;
 FONT = "Helvetica-Bold";
 FONTSIZE = 10;
 
-// Colot Step
+// Colot Step - Specifies the increment step for calculating color variations.
 STEP = 5;
 
-// Range of color
+// Range of color - Represents the range of color values for generating variations.
 QV = 15;
 
-// Количество вариантов
+// Number of variants - Determines the number of color variants to create.
 QTY = 10;
 
-// Margon between swatches
+// Margin between swatches
 MARGIN = 2;
 
 // Margin between original and swatches
