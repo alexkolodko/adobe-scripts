@@ -33,19 +33,24 @@ function getTextMetrics(textSize, scaleMultiplier) {
 }
 
 // Function to write metrics as text frames near selection
-function writeMetricsAsTextFrames(metrics) {
+function writeMetricsAsTextFrames(metrics, position) {
     var sel = app.activeDocument.selection;
 
     if (sel.length > 0) {
         var textFrames = [];
         for (var i = 0; i < sel.length; i++) {
-            var textFrame = app.activeDocument.textFrames.add();
+            var textFrame = app.activeDocument.activeLayer.textFrames.add();
             textFrame.contents = "Text Size:\t" + metrics.textSize + " pt\n" + // (" + (metrics.textSize * 0.352778).toFixed(2) + " mm)
                                  "Cap height:\t" + metrics.capHeight.toFixed(2) + " mm\n" +
                                  "x-height:\t" + metrics.xHeight.toFixed(2) + " mm\n" +
                                  "Distance:\t~" + metrics.readingDistance.toFixed(2) + " m";
-            textFrame.top = sel[i].top - sel[i].height - 10;
-            textFrame.left = sel[i].left;
+            if (position === "below") {
+                textFrame.top = sel[i].top - sel[i].height - 14;
+                textFrame.left = sel[i].left;
+            } else if (position === "above") {
+                textFrame.top = sel[i].top + (14*4+7);
+                textFrame.left = sel[i].left;
+            }
             textFrames.push(textFrame);
         }
         app.activeDocument.selection = textFrames;
@@ -79,8 +84,8 @@ function main() {
         textSizeGroup.orientation = "row";
         var textSizeLabel = textSizeGroup.add("statictext", undefined, "Font Size:");
         textSizeLabel.preferredSize.width = 75; 
-        var textSizeInput = textSizeGroup.add("edittext", undefined, metrics.textSize + " pt");  //  (" + (metrics.textSize * 0.352778).toFixed(2) + " mm)
-        textSizeInput.preferredSize.width = 150; 
+        var textSizeInput = textSizeGroup.add("edittext", undefined, metrics.textSize.toFixed(2) + " pt");
+        textSizeInput.preferredSize.width = 175; 
         textSizeInput.enabled = true;
 
         // Row group for Cap Height
@@ -89,7 +94,7 @@ function main() {
         var capHeightLabel = capHeightGroup.add("statictext", undefined, "Cap height:");
         capHeightLabel.preferredSize.width = 75; 
         var capHeightInput = capHeightGroup.add("edittext", undefined, metrics.capHeight.toFixed(2) + " mm");
-        capHeightInput.preferredSize.width = 150; 
+        capHeightInput.preferredSize.width = 175; 
         capHeightInput.enabled = true;
 
         // Row group for X-height
@@ -98,7 +103,7 @@ function main() {
         var xHeightLabel = xHeightGroup.add("statictext", undefined, "x-height:");
         xHeightLabel.preferredSize.width = 75; 
         var xHeightInput = xHeightGroup.add("edittext", undefined, metrics.xHeight.toFixed(2) + " mm");
-        xHeightInput.preferredSize.width = 150; 
+        xHeightInput.preferredSize.width = 175; 
         xHeightInput.enabled = true;
 
         // Row group for Reading Distance
@@ -107,14 +112,15 @@ function main() {
         var readingDistanceLabel = readingDistanceGroup.add("statictext", undefined, "Distance:");
         readingDistanceLabel.preferredSize.width = 75; 
         var readingDistanceInput = readingDistanceGroup.add("edittext", undefined, "~" + metrics.readingDistance.toFixed(2) + " m");
-        readingDistanceInput.preferredSize.width = 150; 
+        readingDistanceInput.preferredSize.width = 175; 
         readingDistanceInput.enabled = true;
         readingDistanceInput.active = true;
 
        // Radio buttons group for scale multiplier
         var scaleMultiplierGroup = dialog.add("group");
         scaleMultiplierGroup.orientation = "row";
-        var scaleLabel = scaleMultiplierGroup.add("statictext", undefined, "Scale 1:");
+        var scaleLabel = scaleMultiplierGroup.add("statictext", undefined, "Scale 1:x");
+        scaleLabel.preferredSize.width = 75; 
         var scaleRadios = [];
         var scaleValues = [1, 10, 100];
         for (var i = 0; i < scaleValues.length; i++) {
@@ -141,13 +147,23 @@ function main() {
             readingDistanceInput.text = "~" + metrics.readingDistance.toFixed(2) + " m";
         }
 
-        // Button to write metrics as text frames near selection
-        var writeButton = dialog.add("button", undefined, "Paste as Text");
-        writeButton.onClick = function () {
-            writeMetricsAsTextFrames(metrics);
+        // Group row for two buttons: Paste as Text Above & Paste as Text Below
+        var pasteGroup = dialog.add("group");
+        pasteGroup.orientation = "row";
+        
+        pasteGroup.add("statictext", undefined, "Paste as Text:");
+
+        var pasteAboveButton = pasteGroup.add("button", undefined, "Above");
+        pasteAboveButton.onClick = function () {
+            writeMetricsAsTextFrames(metrics, "above");
             dialog.close();
         };
 
+        var pasteBelowButton = pasteGroup.add("button", undefined, "Below");
+        pasteBelowButton.onClick = function () {
+            writeMetricsAsTextFrames(metrics, "below");
+            dialog.close();
+        };
         // Button to close the dialog
         var closeButton = dialog.add("button", undefined, "Close");
         closeButton.onClick = function () {

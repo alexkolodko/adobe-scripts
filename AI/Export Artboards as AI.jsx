@@ -125,7 +125,7 @@ if (saveFolder != null) { // Check if user selected a folder
         }
 
         var aiDoc = new File(saveFolder + "/" + fileName + ".ai"); // Save with .ai extension
-        // saveOptions.saveMultipleArtboards = true;
+        saveOptions.saveMultipleArtboards = true;
         saveOptions.artboardRange = (artboardIndex + 1).toString();
         document.saveAs(aiDoc, saveOptions, true);
     }
