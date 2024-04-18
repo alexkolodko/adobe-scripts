@@ -1,25 +1,24 @@
 # Adobe Scripts
 
-- [Adobe Scripts](#adobe-scripts)
-  - [Adobe Illustrator](#adobe-illustrator)
-    - [Color Proof Maker](#color-proof-maker)
-    - [Export All Artboards as AI](#export-all-artboards-as-ai)
-    - [Export Artboards as AI](#export-artboards-as-ai)
-    - [Font Distance Readability](#font-distance-readability)
-    - [Numbering objects](#numbering-objects)
-    - [Scale Objects](#scale-objects)
-    - [Size of object as text](#size-of-object-as-text)
-    - [Square as text](#square-as-text)
-    - [Square difference 2 objects](#square-difference-2-objects)
-- [How to install scripts](#how-to-install-scripts)
-  - [Adobe Illustrator](#adobe-illustrator-1)
-  - [Adobe InDesign](#adobe-indesign)
-- [How to run scripts](#how-to-run-scripts)
-  - [Useful plugins](#useful-plugins)
+[![Telegram](https://img.shields.io/badge/Telegram%20Channel-%40alexkolodko1-0088cc)](https://t.me/alexkolodko1)
+
+## Donate
+
+Scripts are free to use, but if you want to support the development of these scripts, you can donate:
+
+- [Monobank](https://send.monobank.ua/5jVrTaRziu)
+- [Base by Mono](https://base.monobank.ua/EDCkFUWg3Tp64e)
+- [Buymeacoffee](https://www.buymeacoffee.com/alexkolodko)
+- [Donatello](https://donatello.to/alexkolodko)
+
+
+<a href="https://www.buymeacoffee.com/alexkolodko" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;" ></a>
 
 
 
-## Adobe Illustrator
+
+
+# Adobe Illustrator
 
 ### Color Proof Maker
 
@@ -46,7 +45,7 @@ Export all artboards as separate AI files. Usage: select the folder where you wa
 
 ### Export Artboards as AI
 
-Extended version of the script. Usage: Select Artboard select the folder where you want to save file and select which artboards you want to export: all, only active or choose a few.
+Extended version of the script. Usage: Select Artboard select the folder where you want to save the file and select which artboards you want to export: all, only active or choose a few.
 
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Export%20Artboards%20as%20AI.jsx)
 
@@ -61,12 +60,15 @@ Clarification: The script uses fixed font proportion values — Cap height = 0.7
 
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Font%20Distance%20Readability.jsx)
 
+![Font Distance Readability](/docs/i/font-distance-readability.gif)
 
 ### Numbering objects
 
 This script prompts the user to input a starting number and choose the numeration direction (top to bottom or left to right). It then sorts the selected objects and creates text labels above each object starting from the specified number.
 
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Numbering%20objects.jsx)
+
+![Numbering objects](/docs/i/numbering-objects.gif)
 
 
 ### Scale Objects
@@ -94,7 +96,7 @@ This script displays the size of the selected square as text in the text frame a
 
 This script calculates and displays the area difference between two selected objects (area and bounding box) showing the absolute and percentage differences. It also includes the option to paste the results as text.
 
-[Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Square%20difference%202%20objects.jsx)
+[Download]()
 
 
 
