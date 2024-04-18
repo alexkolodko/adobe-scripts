@@ -16,8 +16,6 @@ var textColor = new CMYKColor();// Adjust text color as needed (CMYK values)
     textColor.magenta   = 0;  
     textColor.yellow    = 0;  
     textColor.black     = 100;
-var textFont = "Arial"; // Adjust text font as needed
-var textStyle = "Regular"; // Adjust text style as needed
 var addMm = true; // Set to true to add " mm", false otherwise
 
 // Main function to get object size and create text
@@ -65,8 +63,6 @@ function createText(doc, text, position, layer) {
     textFrame.contents = addMm ? text + " mm" : text;
     var textRange = textFrame.textRange;
     textRange.characterAttributes.size = textSize;
-    // textRange.characterAttributes.textFont = textFont;
-    // textRange.characterAttributes.textFontStyle = textStyle;
     textRange.characterAttributes.fillColor = textColor;
     return textFrame;
 }
