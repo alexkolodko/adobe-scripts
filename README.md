@@ -50,6 +50,9 @@ Extended version of the script. Usage: Select Artboard select the folder where y
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Export%20Artboards%20as%20AI.jsx)
 
 
+
+
+
 ### Font Distance Readability
 
 This script calculates and displays the readability of a selected text frame based on the font size, cap height, x-height, and reading distance. Then it can paste the result as text in the text frame.
@@ -77,12 +80,16 @@ This script simplifies scaling selected objects in custom proportions. You can i
 
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Scale%20Objects.jsx)
 
+![Scale Objects](docs/i/scale-objects.gif)
+
 
 ### Size of object as text
 
-This script displays the size of the selected object as text in the text frame above the object.
+This script displays the size (bounding box) of the selected object as text in the text frame above the object.
 
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Size%20of%20object%20as%20text.jsx)
+
+![Size as text](/docs/i/size-as-text.gif)
 
 
 ### Square as text
@@ -91,14 +98,14 @@ This script displays the size of the selected square as text in the text frame a
 
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Square%20as%20text.jsx)
 
+![Square as text](/docs/i/square-as-text.gif)
+
 
 ### Square difference 2 objects
 
 This script calculates and displays the area difference between two selected objects (area and bounding box) showing the absolute and percentage differences. It also includes the option to paste the results as text.
 
 [Download]()
-
-
 
 
 
