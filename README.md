@@ -50,7 +50,7 @@ Extended version of the script. Usage: Select Artboard select the folder where y
 [Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/Export%20Artboards%20as%20AI.jsx)
 
 
-
+![Export Artboards as AI](/docs/i/export-as-ai.gif)
 
 
 ### Font Distance Readability
