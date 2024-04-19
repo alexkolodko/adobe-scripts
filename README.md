@@ -107,6 +107,7 @@ This script calculates and displays the area difference between two selected obj
 
 [Download]()
 
+![Square difference 2 objects](/docs/i/square-2-objects.gif)
 
 
 <!-- ### Транслітерація тексту 
@@ -181,9 +182,9 @@ There are two main ways to run a script ([Adobe Help](https://helpx.adobe.com/ua
 
 Perform the following steps to hide the dialog window and run the script.
 
-1. Create a JSX file with the following content: `app.` `preferences``.`setBooleanPreference("ShowExternalJSXWarning", false)`
-1. Save the JSX file.
-1. Go to Menu/File > Scripts > Other Scripts and select the recently saved JSX file.
+1. Create a JSX file with the following content: `app.preferences.setBooleanPreference("ShowExternalJSXWarning", false)`
+2. Save the JSX file.
+3. Go to Menu/File > Scripts > Other Scripts and select the recently saved JSX file.
 
 ## Useful plugins
 
