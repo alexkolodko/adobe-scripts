@@ -40,7 +40,7 @@ function writeMetricsAsTextFrames(metrics, position) {
         var textFrames = [];
         for (var i = 0; i < sel.length; i++) {
             var textFrame = app.activeDocument.activeLayer.textFrames.add();
-            textFrame.contents = "Text Size:\t" + metrics.textSize + " pt\n" + // (" + (metrics.textSize * 0.352778).toFixed(2) + " mm)
+            textFrame.contents = "Text Size:\t" + metrics.textSize.toFixed(2) + " pt\n" + // (" + (metrics.textSize * 0.352778).toFixed(2) + " mm)
                                  "Cap height:\t" + metrics.capHeight.toFixed(2) + " mm\n" +
                                  "x-height:\t" + metrics.xHeight.toFixed(2) + " mm\n" +
                                  "Distance:\t~" + metrics.readingDistance.toFixed(2) + " m";
