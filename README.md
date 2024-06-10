@@ -65,6 +65,17 @@ Clarification: The script uses fixed font proportion values — Cap height = 0.7
 
 ![Font Distance Readability](/docs/i/font-distance-readability.gif)
 
+
+### List of CMYK Colors
+
+Script to extract unique CMYK colors from selected or all objects in a document and display color information.
+
+[Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/AI/List%20of%20CMYK%20Colors.jsx)
+
+![Font Distance Readability](/docs/i/list-of-cmyk-colors.gif)
+
+
+
 ### Numbering objects
 
 This script prompts the user to input a starting number and choose the numeration direction (top to bottom or left to right). It then sorts the selected objects and creates text labels above each object starting from the specified number.
