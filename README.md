@@ -165,6 +165,15 @@ This script calculates and displays the area difference between two selected obj
  -->
 
 
+# Adobe InDesign
+
+### Effective PPI
+
+This script displays the effective PPI of the selected text frame in the text frame above the object.
+
+[Download](https://raw.githubusercontent.com/alexkolodko/adobe-scripts/main/ID/Effective%20PPI.jsx)
+
+![Effective PPI](/docs/i/id-effective-ppi.gif)
 
 
 
